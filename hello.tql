@@ -1,0 +1,25 @@
+define 
+
+group-membership sub relation,
+    relates group-member,
+    relates user-group;
+    
+group-ownership sub relation,
+    relates group-owner,
+    relates owned-group;
+
+credentials sub attribute, value string;  
+  
+subject sub entity,
+    abstract,
+    owns credentials,
+    plays group-membership:group-member,
+    plays group-ownership:group-owner;
+
+user sub subject;
+
+user-group sub subject,
+    plays group-membership:user-group,
+    plays group-ownership:owned-group;
+
+    
